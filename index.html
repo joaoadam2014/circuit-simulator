@@ -1,0 +1,1166 @@
+<htmL>
+    <head>
+        <style>
+            #aba1{
+                height: 350px;
+                width:100px;
+                left:100px;
+                border:1px solid #333;
+                visibility: hidden;
+                position: fixed;
+                top:0;
+            }
+            #aba2{
+                left:200px;
+                height: 350px;
+                width:100px;
+                border:1px solid #333;
+                visibility: hidden;
+                position: fixed;
+                top:0;
+            }
+            #aba3{
+                left:436px;
+                height: 250px;
+                width:100px;
+                border:1px solid #333;
+                visibility: hidden;
+                position: fixed;
+                top:0;
+            }
+            #aba4{
+                left:835px;
+                height: 350px;
+                width:100px;
+                border:1px solid #333;
+                visibility: hidden;
+                position: fixed;
+                top:0;
+            }
+            #aba5{
+                left:50px;
+                height: 400px;
+                width:100px;
+                border:1px solid #333;
+                visibility: hidden;
+                position: fixed;
+                top:100px;
+            }
+            #aba6{
+                left:50px;
+                height: 200px;
+                width:100px;
+                border:1px solid #333;
+                visibility: hidden;
+                position: fixed;
+                top:150px;
+            }
+            #aba7{
+                left:50px;
+                height: 200px;
+                width:100px;
+                border:1px solid #333;
+                visibility: hidden;
+                position: fixed;
+                top:200px;
+            }
+            #aba8{
+                left:50px;
+                height: 200px;
+                width:100px;
+                border:1px solid #333;
+                visibility: hidden;
+                position: fixed;
+                top:250px;
+            }
+            .bt{
+                cursor: pointer;
+                position: fixed;
+                top:0;
+            }
+            .instancebt{
+                width: 100px;
+            }
+            body{
+                cursor:default;
+            }
+            img{
+                transition: scale 500ms linear;
+                z-index: 30;
+            }
+            .not:hover{
+                scale: 1.5;
+                z-index: 30;
+            }
+            .or:hover{
+                scale: 1.5;
+                z-index: 30;
+            }
+            .nor:hover{
+                scale: 1.5;
+                z-index: 30;
+            }
+            .and:hover{
+                scale: 1.5;
+                z-index: 30;
+            }
+            .led:hover{
+                scale: 1.5;
+                z-index: 30;
+            }
+            .nand:hover{
+                scale: 1.5;
+                z-index: 30;
+            }
+            .xor:hover{
+                scale: 1.5;
+                z-index: 30;
+            }
+            .xnor:hover{
+                scale: 1.5;
+                z-index: 30;
+            }
+            .botao:hover{
+                scale: 1.5;
+                z-index: 30;
+            }
+            .botao-invertido:hover{
+                scale: 1.5;
+                z-index: 30;
+            }
+            .TriBuffer:hover{
+                scale: 1.5;
+                z-index: 30;
+            }
+            .Energy-Font{
+                scale:2;
+                z-index: 30;
+            }
+            .Energy-Font:hover{
+                scale:3;
+                z-index: 30;
+            }
+            input{
+                width: 100px;
+            }
+            svg{
+                z-index: 0;
+            }
+            #nc{
+                z-index: 100;
+            }
+            body{
+                scrollbar-arrow-color: #ff0000;
+                scrollbar-color: #ff0000;
+            }
+            div{
+                z-index: 90;
+                background-color: blue;
+                background-size: cover;
+            }
+            button{
+                z-index: 91;
+                background-image: url("imagems/sns_top_nav_bg.gif");
+                background-size: cover;
+                filter:hue-rotate(250deg);     
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            let circuito="and{300;300;1}xor{80;80;2}lineA{1;2;0}led{300;500;3}lineA{3;2;0}"
+            let contagemAtual=3
+            let mx=0
+            let my=0
+            let addCursor=false
+            let moveC=false
+            let lastype="not"
+            let movetool=false
+            let nomenclatura="circuito"
+            if (localStorage.getItem("circuito")==null){
+                localStorage.setItem("circuito",circuito)
+            }
+            if (localStorage.getItem("contagem")==null){
+                localStorage.setItem("contagem",String(contagemAtual))
+            }
+            contagemAtual=Number(localStorage.getItem("contagem"))
+            circuito=localStorage.getItem("circuito")
+            function abrir1(){
+                let aba=document.getElementById("aba1")
+                let visibility=aba.style.visibility
+                if (visibility=="hidden"){
+                    document.getElementById("aba1").style.visibility="visible"
+                }else{
+                    document.getElementById("aba1").style.visibility="hidden"
+                }
+            }
+            function abrir2(){
+                let aba=document.getElementById("aba2")
+                let visibility=aba.style.visibility
+                if (visibility=="hidden"){
+                    document.getElementById("aba2").style.visibility="visible"
+                }else{
+                    document.getElementById("aba2").style.visibility="hidden"
+                }
+            }
+            function abrir3(){
+                let aba=document.getElementById("aba3")
+                let visibility=aba.style.visibility
+                if (visibility=="hidden"){
+                    document.getElementById("aba3").style.visibility="visible"
+                }else{
+                    document.getElementById("aba3").style.visibility="hidden"
+                }
+            }
+            function abrir4(){
+                let aba=document.getElementById("aba4")
+                let visibility=aba.style.visibility
+                if (visibility=="hidden"){
+                    document.getElementById("aba4").style.visibility="visible"
+                }else{
+                    document.getElementById("aba4").style.visibility="hidden"
+                }
+            }
+            function abrir5(){
+                let aba=document.getElementById("aba5")
+                let visibility=aba.style.visibility
+                if (visibility=="hidden"){
+                    document.getElementById("aba5").style.visibility="visible"
+                }else{
+                    document.getElementById("aba5").style.visibility="hidden"
+                }
+            }
+            function abrir6(){
+                let aba=document.getElementById("aba6")
+                let visibility=aba.style.visibility
+                if (visibility=="hidden"){
+                    document.getElementById("aba6").style.visibility="visible"
+                }else{
+                    document.getElementById("aba6").style.visibility="hidden"
+                }
+            }
+            function abrir7(){
+                let aba=document.getElementById("aba7")
+                let visibility=aba.style.visibility
+                if (visibility=="hidden"){
+                    document.getElementById("aba7").style.visibility="visible"
+                }else{
+                    document.getElementById("aba7").style.visibility="hidden"
+                }
+            }
+            function abrir8(){
+                let aba=document.getElementById("aba8")
+                let visibility=aba.style.visibility
+                if (visibility=="hidden"){
+                    document.getElementById("aba8").style.visibility="visible"
+                }else{
+                    document.getElementById("aba8").style.visibility="hidden"
+                }
+            }
+            function ler(){
+                 let objetos=circuito.split("}").filter(Boolean);
+                 objetos.forEach(objeto =>{
+                    let conteudo=objeto.split("{")[1]
+                    let nome=objeto.split("{")[0].trim()
+                    let dados=conteudo.split(";")
+                    let x=Number(dados[0])
+                    let y=Number(dados[1])
+                    let id=Number(dados[2])
+                if(nome=="not"){
+                     document.write("<img src='imagems/not.png' data-inputA='0' data-inputB='0' id='"+id+"' style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='not'></img>")
+                }
+                 if(nome=="or"){
+                    document.write("<img src='imagems/or.png' data-inputA='0' data-inputB='0' id='"+id+"'style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='or'></img>")
+                }
+                if(nome=="nor"){
+                    document.write("<img src='imagems/nor.png' data-inputA='0' data-inputB='0'  id='"+id+"' style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='nor'></img>")
+                }
+                if(nome=="and"){
+                     document.write("<img src='imagems/and.png' data-inputA='0' data-inputB='0'  id='"+id+"' style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='and'></img>")
+                }
+                 if(nome=="nand"){
+                     document.write("<img src='imagems/nand.png' data-inputA='0' data-inputB='0'  id='"+id+"' style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='nand'></img>")
+                }
+                if(nome=="xor"){
+                    document.write("<img src='imagems/xor.png' data-inputA='0' data-inputB='0'  id='"+id+"' style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='xor'></img>")
+                }
+                if(nome=="xnor"){
+                    document.write("<img src='imagems/xnor.png' data-inputA='0' data-inputB='0'  id='"+id+"' style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='xnor'></img>")
+                }
+                if(nome=="input"){
+                     document.write("<img src='imagems/input.png' data-inputA='0' data-inputB='0'  id='"+id+"' style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='input'></img>")
+                }
+                if(nome=="led"){
+                    document.write("<img src='imagems/0Led.png' data-inputA='0' data-inputB='0'  id='"+id+"' style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='led'></img>")
+                }
+                if(nome=="input"){
+                    document.write("<img src='imagems/input.png' data-inputA='0' data-inputB='0'  id='"+id+"' style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='botao'></img>")
+                }
+                if(nome=="notinput"){
+                    document.write("<img src='imagems/notinput.png' data-inputA='0' data-inputB='0'  id='"+id+"' style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='botao-invertido'></img>")
+                }
+                if(nome=="TriBuffer"){
+                    document.write("<img src='imagems/TriBuffer.png' data-inputA='0' data-inputB='0'  id='"+id+"' style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='TriBuffer'></img>")
+                }
+                if(nome=="Buffer"){
+                    document.write("<img src='imagems/Buffer.png' data-inputA='0' data-inputB='0'  id='"+id+"' style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='Buffer'></img>")
+                }
+                if(nome=="Energy-Font"){
+                    document.write("<img src='imagems/bateria.png' data-inputA='0' data-inputB='0'  id='"+id+"' style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='Energy-font'></img>")
+                }
+                 if(nome=="lineB"){
+                    let obj1X=document.getElementById(String(x)).style.left.split("px")[0]
+                    let obj2X=document.getElementById(String(y)).style.left.split("px")[0]
+                    let obj1Y=document.getElementById(String(x)).style.bottom.split("px")[0]
+                    let obj2Y=document.getElementById(String(y)).style.bottom.split("px")[0]
+                    let inverterAltura=window.innerHeight-Number(obj1Y)
+                    let inverterLargura=window.innerHeight-Number(obj2Y)-20
+                    let encaixarNoOutputX=Number(obj2X)+41
+                    document.write("<svg style='position:absolute;width:100%;height:100%;top:0;left:0;' data-obj-1='"+document.getElementById(String(x))+"'data-obj-2='"+document.getElementById(String(y))+"'><path class='conexão-B' d='M"+Number(obj1X)+" "+inverterAltura+" L "+encaixarNoOutputX+" "+inverterLargura+"' stroke='#333' stroke-width='3' fill='none'></path></svg>")
+                    window.setTimeout(()=>{
+                        energyB(document.getElementById(String(x)),document.getElementById(String(y)))
+                    },1000)
+                }
+                if(nome=="lineA"){
+                    let obj1X=document.getElementById(String(x)).style.left.split("px")[0]
+                    let obj2X=document.getElementById(String(y)).style.left.split("px")[0]
+                    let obj1Y=document.getElementById(String(x)).style.bottom.split("px")[0]
+                    let obj2Y=document.getElementById(String(y)).style.bottom.split("px")[0]
+                    let inverterAltura=window.innerHeight-Number(obj1Y)-38
+                    let inverterLargura=(window.innerHeight-Number(obj2Y))-20
+                    let encaixarNoOutputX=Number(obj2X)+41
+                    document.write("<svg style='position:absolute;width:100%;height:100%;top:0;left:0;' data-obj-1='"+document.getElementById(String(x))+"'data-obj-2='"+document.getElementById(String(y))+"'><path class='conexão-A' d='M"+Number(obj1X)+" "+inverterAltura+" L "+encaixarNoOutputX+" "+inverterLargura+"' stroke='#333' stroke-width='3' fill='none'></path></svg>")
+                    window.setTimeout(()=>{
+                        energyA(document.getElementById(String(x)),document.getElementById(String(y)))
+                    },1000)
+                }
+                if (nome=="" || nome==null || nome==undefined){
+                    document.write("<img src='imagems/portaSecreta.png' data-inputA='0' data-inputB='0'  id='"+id+"' style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='???'></img>")
+                }
+                if (nome != "xor" && nome !="or" && nome !="nor" && nome !="not" && nome !="nand" && nome !="and" && nome !="xnor" && nome !="led" && nome !="input" && nome !="notinput" && nome !="lineA" && nome !="lineB" && nome !="TriBuffer" && nome !="Buffer" && nome !="Energy-Font"){
+                    document.write("<img src='imagems/portaSecreta.png' data-inputA='0' data-inputB='0'  id='"+id+"' style='position:absolute;left:"+x+"px;"+"bottom:"+y+"px;'class='???'></img>")
+                }
+                })
+            }
+            function energyA(a,b){
+                let porta1=document.getElementById(String(a))
+                let porta2=document.getElementById(String(b))
+                let classe1=porta1.classList[0]
+                let classe2=porta2.classList[0]
+                
+                if(classe1=="not"){
+                    if(porta1.dataset.inputa=="0" || porta1.dataset.inputb=="0"){
+                        porta2.dataset.inputa="1"
+                        energyA(a,b)
+                    }else{
+                        porta2.dataset.inputa="0"
+                        energyA(a,b)
+                    }
+                }
+                if(classe1=="or"){
+                    if(porta1.dataset.inputa=="1" || porta1.dataset.inputb=="1"){
+                        porta2.dataset.inputa="1"
+                        energyA(a,b)
+                    }else{
+                        porta2.dataset.inputa="0"
+                        energyA(a,b)
+                    }
+                }
+                if(classe1=="nor"){
+                    if(porta1.dataset.inputa=="0" && porta1.dataset.inputb=="0"){
+                        porta2.dataset.inputa="1"
+                        energyA(a,b)
+                    }else{
+                        porta2.dataset.inputa="0"
+                        energyA(a,b)
+                    }
+                }
+                if(classe1=="and"){
+                    if(porta1.dataset.inputa=="1" && porta1.dataset.inputb=="1"){
+                        porta2.dataset.inputa="1"
+                        energyA(a,b)
+                    }else{
+                        porta2.dataset.inputa="0"
+                        energyA(a,b)
+                    }
+                }
+                if(classe1=="nand"){
+                    if(porta1.dataset.inputa=="0" || porta1.dataset.inputb=="0"){
+                        porta2.dataset.inputa="1"
+                    }else{
+                        porta2.dataset.inputa="0"
+                        energyA(a,b)
+                    }
+                }
+                if(classe1=="xor"){
+                    if(porta1.dataset.inputa != porta1.dataset.inputb){
+                        porta2.dataset.inputa="1"
+                    }else{
+                        porta2.dataset.inputa="0"
+                        energyA(a,b)
+                    }
+                }
+                if(classe1=="xnor"){
+                    if(porta1.dataset.inputa == porta1.dataset.inputb){
+                        porta2.dataset.inputa="1"
+                        energyA(a,b)
+                    }else{
+                        porta2.dataset.inputa="0"
+                        energyA(a,b)
+                    }
+                }
+                if(classe1=="led"){
+                    if(porta1.dataset.inputa=="1" || porta1.dataset.inputb=="1"){
+                        porta2.dataset.inputa="1"
+                        porta2.src="imagems/1Led.png"
+                        energyA(a,b)
+                    }else{
+                        porta2.dataset.inputa="0"
+                        porta2.src="imagems/0Led.png"
+                        energyA(a,b)
+                    }
+                }
+                if(classe1=="input"){
+                    if(porta1.dataset.inputa=="1" || porta1.dataset.inputb=="1"){
+                        porta2.dataset.inputa="1"
+                        energyB(a,b)
+                    }else{
+                        porta2.dataset.inputa="0"
+                        energyB(a,b)
+                    }
+                }
+                if(classe1=="notinput"){
+                    if(porta1.dataset.inputa=="0" && porta1.dataset.inputb=="0"){
+                        porta2.dataset.inputa="1"
+                        energyB(a,b)
+                    }else{
+                        porta2.dataset.inputa="0"
+                        energyB(a,b)
+                    }
+                }
+                if(classe1=="???"){
+                    if(porta1.dataset.inputa=="1" || porta1.dataset.inputb=="1"){
+                        porta2.dataset.inputa="1"
+                        energyA(a,b)
+                    }else{
+                        porta2.dataset.inputa="0"
+                        energyA(a,b)
+                    }
+                }
+                if(classe1=="Tribuffer"){
+                    if(porta1.dataset.inputa=="1" && porta1.dataset.inputb=="0"){
+                        porta2.dataset.inputa="1"
+                        energyA(a,b)
+                    }else{
+                        porta2.dataset.inputa="0"
+                        energyA(a,b)
+                    }
+                }
+                if(classe1=="Buffer"){
+                    if(porta1.dataset.inputa=="1" || porta1.dataset.inputb=="1"){
+                        porta2.dataset.inputa="1"
+                        energyA(a,b)
+                    }else{
+                        porta2.dataset.inputa="0"
+                        energyA(a,b)
+                    }
+                }
+                if(classe1=="Energy-Font"){
+                    if(porta1.dataset.inputa=="1" || porta1.dataset.inputb=="1" || porta1.dataset.inputb=="0" || porta1.dataset.inputA=="0"){
+                        porta2.dataset.inputa="1"
+                        energyA(a,b)
+                    }else{
+                        porta2.dataset.inputa="0"
+                        energyA(a,b)
+                    }
+                }
+            }
+             function energyB(a,b){
+                let porta1=document.getElementById(String(a))
+                let porta2=document.getElementById(String(b))
+                let classe1=porta1.classList[0]
+                let classe2=porta2.classList[0]
+                if(classe1=="not"){
+                    if(porta1.dataset.inputa=="0" || porta1.dataset.inputb=="0"){
+                        porta2.dataset.inputb="1"
+                        energyB(a,b)
+                    }else{
+                        porta2.dataset.inputb="0"
+                        energyB(a,b)
+                    }
+                }
+                if(classe1=="or"){
+                    if(porta1.dataset.inputa=="1" || porta1.dataset.inputb=="1"){
+                        porta2.dataset.inputb="1"
+                        energyB(a,b)
+                    }else{
+                        porta2.dataset.inputb="0"
+                        energyB(a,b)
+                    }
+                }
+                if(classe1=="nor"){
+                    if(porta1.dataset.inputa=="0" && porta1.dataset.inputb=="0"){
+                        porta2.dataset.inputb="1"
+                        energyB(a,b)
+                    }else{
+                        porta2.dataset.inputb="0"
+                        energyB(a,b)
+                    }
+                }
+                if(classe1=="and"){
+                    if(porta1.dataset.inputa=="1" && porta1.dataset.inputb=="1"){
+                        porta2.dataset.inputb="1"
+                        energyB(a,b)
+                    }else{
+                        porta2.dataset.inputb="0"
+                        energyB(a,b)
+                    }
+                }
+                if(classe1=="nand"){
+                    if(porta1.dataset.inputa=="0" || porta1.dataset.inputb=="0"){
+                        porta2.dataset.inputb="1"
+                    }else{
+                        porta2.dataset.inputb="0"
+                        energyB(a,b)
+                    }
+                }
+                if(classe1=="xor"){
+                    if(porta1.dataset.inputa != porta1.dataset.inputb){
+                        porta2.dataset.inputb="1"
+                    }else{
+                        porta2.dataset.inputb="0"
+                        energyB(a,b)
+                    }
+                }
+                if(classe1=="xnor"){
+                    if(porta1.dataset.inputa == porta1.dataset.inputb){
+                        porta2.dataset.inputb="1"
+                        energyB(a,b)
+                    }else{
+                        porta2.dataset.inputb="0"
+                        energyB(a,b)
+                    }
+                }
+                if(classe1=="led"){
+                    if(porta1.dataset.inputa=="1" || porta1.dataset.inputb=="1"){
+                        porta2.dataset.inputb="1"
+                        porta2.src="imagems/1Led.png"
+                        energyB(a,b)
+                    }else{
+                        porta2.dataset.inputb="0"
+                        porta2.src="imagems/0Led.png"
+                        energyB(a,b)
+                    }
+                }
+                if(classe1=="input"){
+                    if(porta1.dataset.inputa=="1" || porta1.dataset.inputb=="1"){
+                        porta2.dataset.inputb="1"
+                        energyB(a,b)
+                    }else{
+                        porta2.dataset.inputb="0"
+                        energyB(a,b)
+                    }
+                }
+                if(classe1=="notinput"){
+                    if(porta1.dataset.inputa=="0" && porta1.dataset.inputb=="0"){
+                        porta2.dataset.inputb="1"
+                        energyB(a,b)
+                    }else{
+                        porta2.dataset.inputb="0"
+                        energyB(a,b)
+                    }
+                }
+                if(classe1=="???"){
+                    if(porta1.dataset.inputa=="1" || porta1.dataset.inputb=="1"){
+                        porta2.dataset.inputa="1"
+                        energyA(a,b)
+                    }else{
+                        porta2.dataset.inputa="0"
+                        energyA(a,b)
+                    }
+                }
+                if(classe1=="TriBuffer"){
+                    if(porta1.dataset.inputa=="1" && porta1.dataset.inputb=="0"){
+                        porta2.dataset.inputa="1"
+                        energyA(a,b)
+                    }else{
+                        porta2.dataset.inputa="0"
+                        energyA(a,b)
+                    }
+                }
+                if(classe1=="Buffer"){
+                    if(porta1.dataset.inputa=="1" || porta1.dataset.inputb=="1"){
+                        porta2.dataset.inputb="1"
+                        energyB(a,b)
+                    }else{
+                        porta2.dataset.inputb="0"
+                        energyB(a,b)
+                    }
+                }
+                if(classe1=="Energy-Font"){
+                    if(porta1.dataset.inputa=="1" || porta1.dataset.inputb=="1" || porta1.dataset.inputb=="0" || porta1.dataset.inputA=="0"){
+                        porta2.dataset.inputb="1"
+                        energyA(a,b)
+                    }else{
+                        porta2.dataset.inputb="0"
+                        energyA(a,b)
+                    }
+                }
+            }
+            function reload(){
+                let imgs=document.querySelectorAll("img")
+                let svgs=document.querySelectorAll("svg")
+                imgs.forEach(Elemento=>{
+                let class0=Elemento.classList[0]
+                if (class0=="undeletable"){
+
+                }else{
+                    Elemento.innerHTML=""
+                    Elemento.id="deletado"
+                    Elemento.src=""
+                }
+                })
+                svgs.forEach(Elemento=>{
+                    Elemento.innerHTML=""
+                    Elemento.id="deletado"
+                })
+                let tudo=document.body.innerHTML
+                let tudo2=document.head.innerHTML
+                window.setTimeout(()=>{
+                    ler()
+                    document.body.innerHTML=document.body.innerHTML+tudo
+                    document.head.innerHTML=document.head.innerHTML+tudo2
+                },1000)
+            }
+            function reloadSpeed(){
+                let imgs=document.querySelectorAll("img")
+                let svgs=document.querySelectorAll("svg")
+                imgs.forEach(Elemento=>{
+                    let class0=Elemento.classList[0]
+                    if (class0=="undeletable"){
+
+                    }else{
+                        Elemento.innerHTML=""
+                        Elemento.id="deletado"
+                        Elemento.src=""
+                    }
+                })
+                svgs.forEach(Elemento=>{
+                    Elemento.innerHTML=""
+                    Elemento.id="deletado"
+                })
+                let tudo=document.body.innerHTML
+                let tudo2=document.head.innerHTML
+                window.setTimeout(()=>{
+                    ler()
+                    document.body.innerHTML=document.body.innerHTML+tudo
+                    document.head.innerHTML=document.head.innerHTML+tudo2
+                },250)
+            }
+            
+            ler()
+            window.addEventListener("click",(e)=>{
+                mx=e.pageX
+                my=e.pageY
+                let py=my+100
+                let py2=window.innerHeight-my
+            if(addCursor==true){
+                document.body.style.cursor="cell"
+                contagemAtual=contagemAtual+1
+                if (lastype=="???" && document.querySelectorAll("input")[8].value != ""){lastype=document.querySelectorAll("input")[8].value}
+                circuito=circuito+lastype+"{"+mx+";"+py2+";"+String(contagemAtual)+";}"
+                reloadSpeed()
+                localStorage.setItem("circuito",circuito)
+                localStorage.setItem("contagem",String(contagemAtual))
+                window.location.reload()
+            }else{
+                 document.body.style.cursor="default"
+            }
+            })
+            let bolhaAtual=null
+            window.addEventListener("mouseover",(e)=>{
+                let objetoId=e.target.id
+                let objetoClass=e.target.classList[0]
+                let tipo=e.target.className
+                let xpos=e.screenX
+                let ypos=e.screenY
+                let bolha=document.createElement("b")
+                if (tipo=="body" || objetoClass==undefined){ 
+                    bolhaAtual=null;
+                    bolha=null;
+                    return;    
+                }
+                else{
+                    bolha.style.border="2px solid #333"
+                    bolha.style.position="fixed"
+                    bolha.style.left=String(xpos)+"px"
+                    bolha.style.top=String(ypos)+"px"
+                    bolha.innerHTML="tipo de porta:"+objetoClass+"<br>"+"id da porta:"+objetoId
+
+                    document.body.appendChild(bolha)
+                    bolhaAtual=bolha
+                }
+            })
+            window.addEventListener("mousemove",(e)=>{
+                if(moveC==true || addCursor==true){
+                    let imagemCursor=lastype
+                    if(imagemCursor=="led"){
+                        imagemCursor="0Led"
+                    }
+                    if (imagemCursor=="???"){
+                        imagemCursor="portaSecreta"
+                    }
+                    if (imagemCursor=="Energy-Font"){
+                        imagemCursor="bateria"
+                    }
+                    document.body.style.cursor="url(imagems/"+imagemCursor+".png),auto"
+                }
+                if (movetool==true){
+                    document.body.style.cursor="url(imagems/"+"MoveCursor"+".png),auto"
+                }
+            })
+            window.addEventListener("mouseout",()=>{
+                if (bolhaAtual){
+                    bolhaAtual.remove()
+                    bolhaAtual=null
+                }
+            })
+            window.addEventListener("keydown",(e)=>{
+                let py=my+100
+                let py2=window.innerHeight-my
+                if(e.keyCode==17){
+                    if(e.keyCode==90){
+                        ctrl_Z()
+                    }
+                }
+                if(e.keyCode==16){
+                    document.body.style.cursor="cell"
+                    contagemAtual=contagemAtual+1
+                    circuito=circuito+lastype+"{"+mx+";"+py2+";"+String(contagemAtual)+";}"
+                    reloadSpeed()
+                    localStorage.setItem("circuito",circuito)
+                    localStorage.setItem("contagem",String(contagemAtual))
+                    window.location.reload()
+                }else{
+                 document.body.style.cursor="default"
+                }
+            })
+            function switchCursor(){
+                if (addCursor==true){
+                    addCursor=false
+                }else{
+                    addCursor=true
+                }
+            }
+            function switchCursor2(){
+                if (moveC==true){
+                    document.body.style.cursor="move"
+                    moveC=false
+                }else{
+                    moveC=true
+                    document.body.style.cursor="default"
+                }
+            }
+            function createDoor(door){
+                lastype=door
+                switchCursor()
+            }
+            function createLineA(){
+                circuito=circuito+"lineA"+"{"+contagemAtual+";"+String(contagemAtual-1)+";"+0+";}"
+                localStorage.setItem("circuito",circuito)
+                reloadSpeed()
+                window.location.reload()
+            }
+            function createLineB(){
+                circuito=circuito+"lineB"+"{"+contagemAtual+";"+String(contagemAtual-1)+";"+0+";}"
+                localStorage.setItem("circuito",circuito)
+                reloadSpeed()
+                window.location.reload()
+            }
+            function createLineAComPenultimo(){
+                circuito=circuito+"lineA"+"{"+contagemAtual+";"+String(contagemAtual-2)+";"+0+";}"
+                localStorage.setItem("circuito",circuito)
+                reloadSpeed()
+                window.location.reload()
+            }
+            function createLineBComPenultimo(){
+                circuito=circuito+"lineB"+"{"+contagemAtual+";"+String(contagemAtual-2)+";"+0+";}"
+                localStorage.setItem("circuito",circuito)
+                reloadSpeed()
+                window.location.reload()
+            }
+            function createLineporId(){
+                let inputs=document.querySelectorAll("input")
+                let checkbox=inputs[0].value
+                let ob1=inputs[1].value
+                let ob2=inputs[2].value
+                let valorr="A"
+                if(checkbox=="on" || checkbox==true){
+                    valorr="B"
+                }
+                circuito=circuito+"line"+valorr+"{"+ob1+";"+ob2+";"+0+";}"
+                localStorage.setItem("circuito",circuito)
+                reloadSpeed()
+                window.location.reload()
+            }
+            function ctrl_Z(){
+                let portasTamanho=circuito.split("}").length
+                let ultimaPorta=circuito.split("}")[portasTamanho-2]
+                let nome=ultimaPorta.split("{")[0]
+                window.setTimeout(()=>{
+                    if (nome.includes("line")){
+                        localStorage.setItem("circuito",circuito.replace(ultimaPorta,""))
+                        reloadSpeed()
+                        window.location.reload()
+                    }else{
+                        if (contagemAtual>0){contagemAtual=contagemAtual-1}
+                        localStorage.setItem("circuito",circuito.replace(ultimaPorta,""))
+                        localStorage.setItem("contagem",contagemAtual)
+                        reloadSpeed()
+                        window.location.reload()
+                    }
+                },500)
+            }
+            function moveLastDoor(){
+                let portasTamanho=circuito.split("}").length
+                let ultimaPorta=circuito.split("}")[portasTamanho-2]
+                let nome=ultimaPorta.split("{")[0]
+                window.setTimeout(()=>{
+                    if (nome.includes("line")){
+                        reloadSpeed()
+                        window.location.reload()
+                    }else{
+                        if (contagemAtual>0){contagemAtual=contagemAtual-1}
+                        localStorage.setItem("circuito",circuito.replace(ultimaPorta,""))
+                        localStorage.setItem("contagem",contagemAtual)
+                        circuito=circuito.replace(ultimaPorta,"")
+                        document.getElementById(ultimaPorta.split(";")[2]).remove()
+                        createDoor(nome)
+                    }
+                },500)
+            }
+            function clear(){
+            circuito=""
+            contagemAtual=0
+            addCursor=false
+            window.setTimeout(()=>{
+                localStorage.setItem("circuito","")
+                localStorage.setItem("contagem","0")
+
+                reloadSpeed()  
+                window.location.reload()
+            },250)
+            }
+            window.setTimeout(()=>{
+                document.getElementById("nc").onclick=function(){
+                    clear()
+                }
+            },1000)
+            window.setInterval(()=>{
+                let imagems=document.querySelectorAll("img")
+                let svgs=document.querySelectorAll("svg")
+                let textInstance=document.getElementById("description")
+                let xors=0
+                let ands=0
+                let nands=0
+                let nots =0
+                let xnors=0
+                let ors=0
+                let nors=0
+                let inputs=0
+                let leds=0
+                let fios=0
+                svgs.forEach(elemento=>{
+                    fios=fios+1
+                })
+                imagems.forEach(elemento =>{
+                    let classe=elemento.classList[0]
+                    if (classe=="undeletable"){
+
+                    }else{
+                        if(classe=="xor"){
+                            xors=xors+1
+                        }
+                        if(classe=="and"){
+                            ands=ands+1
+                        }
+                        if(classe=="nand"){
+                            nands=nands+1
+                        }
+                        if(classe=="not"){
+                            nots=nots+1
+                        }
+                        if(classe=="xnor"){
+                            xnors=xnors+1
+                        }
+                        if(classe=="or"){
+                            ors=ors+1
+                        }
+                        if(classe=="nor"){
+                            nors=nors+1
+                        }
+                        if(classe=="input"){
+                            inputs=inputs+1
+                        }
+                        if(classe=="led"){
+                            leds=leds+1
+                        }
+                        if(classe=="botao-invertido"){
+                            inputs=inputs+1
+                            nots=nots+1
+                        }
+                    }
+                })
+                textInstance.innerHTML="Para montar esse sistema na vida real você precisa de:<br>"+xors+" xors<br>"+ands+" ands<br>"+nands+" nands<br>"+nots+" nots<br>"+xnors+" xnors<br>"+ors+" ors<br>"+nors+" nors<br>"+inputs+" botões<br>"+leds+" leds"+"<h3>Conexões:</h3>"+fios+" fios"
+            },100)
+            function removeDoor(){
+                let id=document.querySelectorAll("input")[3].value
+                window.setTimeout(()=>{
+                    if(document.getElementById(id)){
+                        let porta=document.getElementById(id)
+                        let portaX=String(porta.style.left).replace("px","")
+                        let portaY=String(porta.style.bottom).replace("px","")
+                        let tipo=porta.classList[0]
+                        let stringFind=tipo+"{"+portaX+";"+portaY+";"+id+";}"
+                        if (contagemAtual>0){contagemAtual=contagemAtual-1}
+                        localStorage.setItem("circuito",circuito.replace(stringFind,""))
+                        localStorage.setItem("contagem",contagemAtual)
+                        circuito=circuito.replace(stringFind,"")
+                        window.location.reload()
+                    }
+                },500)
+            }
+            function grabDoor(){
+                let id=document.querySelectorAll("input")[4].value
+                window.setTimeout(()=>{
+                    if(document.getElementById(id)){
+                        let porta=document.getElementById(id)
+                        let portaX=String(porta.style.left).replace("px","")
+                        let portaY=String(porta.style.bottom).replace("px","")
+                        let tipo=porta.classList[0]
+                        let stringFind=tipo+"{"+portaX+";"+portaY+";"+id+";}"
+                        if (contagemAtual>0){contagemAtual=contagemAtual-1}
+                        localStorage.setItem("circuito",circuito.replace(stringFind,""))
+                        localStorage.setItem("contagem",contagemAtual)
+                        circuito=circuito.replace(stringFind,"")
+                        document.getElementById(id).remove()
+                        createDoor(tipo)
+                    }
+                },500)
+            }
+            function InvertDoor(){
+                let id=document.querySelectorAll("input")[5].value
+                window.setTimeout(()=>{
+                    if(document.getElementById(id)){
+                        let porta=document.getElementById(id)
+                        let portaX=String(porta.style.left).replace("px","")
+                        let portaY=String(porta.style.bottom).replace("px","")
+                        let tipo=porta.classList[0]
+                        let inversor="not"
+                        if(tipo=="xor"){
+                            inversor="xnor"
+                        }
+                        if(tipo=="and"){
+                            inversor="nand"
+                        }
+                        if(tipo=="or"){
+                            inversor="nor"
+                        }
+                        if(tipo=="xnor"){
+                            inversor="xor"
+                        }
+                        if(tipo=="nand"){
+                            inversor="and"
+                        }
+                        if(tipo=="nor"){
+                            inversor="or"
+                        }
+                        if(tipo=="input"){
+                            inversor="notinput"
+                        }
+                        if(tipo=="notinput"){
+                            inversor="input"
+                        }
+                        let stringFind=tipo+"{"+portaX+";"+portaY+";"+id+";}"
+                        localStorage.setItem("circuito",circuito.replace(stringFind,inversor+"{"+portaX+";"+portaY+";"+id+";}"))
+                        localStorage.setItem("contagem",contagemAtual)
+                        circuito=circuito.replace(stringFind,"")
+                        window.location.reload()
+                    }
+                },500)
+            }
+             function SwitchDoor(){
+                let id=contagemAtual
+                window.setTimeout(()=>{
+                    if(document.getElementById(id)){
+                        let porta=document.getElementById(id)
+                        let portaX=String(porta.style.left).replace("px","")
+                        let portaY=String(porta.style.bottom).replace("px","")
+                        let tipo=porta.classList[0]
+                        let inversor="not"
+                        if(tipo=="xor"){
+                            inversor=lastype
+                        }
+                        if(tipo=="and"){
+                            inversor=lastype
+                        }
+                        if(tipo=="or"){
+                            inversor=lastype
+                        }
+                        if(tipo=="xnor"){
+                            inversor=lastype
+                        }
+                        if(tipo=="nand"){
+                            inversor=lastype
+                        }
+                        if(tipo=="nor"){
+                            inversor=lastype
+                        }
+                        if(tipo=="input"){
+                            inversor=lastype
+                        }
+                        if(tipo=="notinput"){
+                            inversor=lastype
+                        }
+                        let stringFind=tipo+"{"+portaX+";"+portaY+";"+id+";}"
+                        localStorage.setItem("circuito",circuito.replace(stringFind,inversor+"{"+portaX+";"+portaY+";"+id+";}"))
+                        localStorage.setItem("contagem",contagemAtual)
+                        circuito=circuito.replace(stringFind,"")
+                        window.location.reload()
+                    }
+                },500)
+            }
+            function exportar(){
+                if (document.querySelectorAll("input")[6].value=="" || document.querySelectorAll("input")[6].value==" "){
+                    nomenclatura="circuito"
+                }else{
+                    nomenclatura=document.querySelectorAll("input")[6].value
+                }
+                let codigo=circuito
+                let blob = new Blob([codigo],{ type:"text/plain"})
+                let url =URL.createObjectURL(blob)
+
+                let a= document.createElement("a")
+                a.href=url
+                a.download=nomenclatura+".AdamCircuit"
+                a.click()
+                URL.revokeObjectURL(url)
+            }
+            function inportar(){
+                let leitor=new FileReader
+                let inputfile=document.getElementById("Arquivo")
+                if (!inputfile.files.length){alert("falha na importação erro 0")}
+                let conteudo=inputfile.files[0]
+                leitor.onload=(e)=>{
+                    let conteudo2=e.target.result
+                    let countPortas=0
+                    let portas=circuito.split("}")
+                    portas.forEach(elemento=>{
+                        if(elemento.includes("lineA") || elemento.includes("lineB")){
+                            countPortas=countPortas
+                        }else{
+                            countPortas=countPortas+1
+                        }
+                    })
+                    circuito=conteudo2
+                    contagemAtual=countPortas
+                    localStorage.setItem("circuito",conteudo2)
+                    localStorage.setItem("contagem",countPortas)
+                    window.location.reload()
+                    console.log(conteudo2)
+                }
+                leitor.onerror=function(){
+                    alert("falha na importação, erro 1")
+                }
+            leitor.readAsText(conteudo)
+        }
+        </script>
+        <div id="aba1">
+            <br>
+            <h4>Portas lógicas</h4>
+            <button class="instancebt" ondblclick="createDoor('not')">not</button>
+            <button class="instancebt" ondblclick="createDoor('or')">or</button>
+            <button class="instancebt"ondblclick="createDoor('and')">and</button>
+            <button class="instancebt"ondblclick="createDoor('xor')">xor</button>
+            <button class="instancebt"ondblclick="createDoor('xnor')">xnor</button>
+            <button class="instancebt"ondblclick="createDoor('nand')">nand</button>
+            <button class="instancebt"ondblclick="createDoor('nor')">nor</button>
+            <button class="instancebt"ondblclick="createDoor('TriBuffer')">Tri-Buffer</button>
+            <button class="instancebt"ondblclick="createDoor('Buffer')">Buffer</button>
+            <button class="instancebt"ondblclick="createDoor('Energy-Font')">Bateria</button>
+            <button class="instancebt"ondblclick="createDoor('???')">não indentificada</button>
+        </div>
+        <div id="aba2">
+            <br>
+            <h4>Fios e conexões</h4>
+            <button class="instancebt" onclick="createLineA()">Fio entrada A</button>
+            <button class="instancebt" onclick="createLineB()">Fio Entrada B</button>
+            <button class="instancebt" onclick="createLineAComPenultimo()">Fio entrada A com a antepenultima instancia</button>
+            <button class="instancebt" onclick="createLineBComPenultimo()">Fio entrada B com a antepenultima instancia</button>
+        </div>
+        <div id="aba3">
+            <br>
+            <h4>Entradas E saidas</h4>
+            <button class="instancebt" ondblclick="createDoor('led')">Led</button>
+            <button class="instancebt" ondblclick="createDoor('input')">Botão</button>
+        </div>
+        <div id="aba4">
+            <br>
+            <h4>fios por id:</h4>
+            <p>seu fio é para a porta B?</p>
+            <input type="checkbox" style="scale: 2;"></input>
+            <p> id porta 1:</p>
+            <input type="number"></input>
+            <p> id porta 2:</p>
+            <input type="number"></input>
+            <button class="instancebt" onclick="createLineporId()">criar</button>
+        </div>
+        <div id="aba5">
+            <br>
+            <h4>informação:</h4>
+            <p id="description"></p>
+
+        </div>
+        <div id="aba6">
+            <br>
+            <h4>deletar portas por id:</h4>
+            <input type="number"></input>
+            <br>
+            <button class="instancebt" onclick="removeDoor()">confirmar</button>
+        </div>
+        <div id="aba7">
+            <br>
+            <h4>mover portas por id:</h4>
+            <input type="number"></input>
+            <br>
+            <button class="instancebt" onclick="grabDoor()">confirmar</button>
+        </div>
+        <div id="aba8">
+            <br>
+            <h4>inverter portas por id:</h4>
+            <input type="number"></input>
+            <br>
+            <button class="instancebt" onclick="InvertDoor()">confirmar</button>
+        </div>
+        <button onclick="abrir1()" class="bt" style="left:100px;">criar instância</button>
+        <button onclick="abrir2()" class="bt" style="left:210px;">criar conexão</button>
+        <button onclick="reload()" class="bt" style="left:310px;">recarregar circuito</button>
+        <button onclick="abrir3()" class="bt" style="left:436px;">criar entradas e saídas</button>
+        <button onclick="ctrl_Z()" class="bt" style="left:590px;">Ctrl Z/ desfazer ação</button>
+        <button onclick="clear()" class="bt" style="left:735px;" id="nc">Novo circuito</button>
+        <button onclick="abrir4()" class="bt" style="left:835px;">Conexões por id</button>
+        <button onclick="exportar()" class="bt" style="left:320px;top:25px;">Exportar</button>
+        <b style="left:100px;position:fixed;top:25px;"> nome do projeto:</b>
+        <input style="left:220px;position:fixed;top:25px;"></input>
+        <input style="left:390px;position:fixed;top:25px;width: auto;" type="file" id="Arquivo"></input>
+        <b style="left:50px;bottom:25px; position:fixed; width: auto;">porta de outra versão não indentificada: </b>
+        <input style="left:350px;bottom:25px; position:fixed;"></input>
+        <button ondblclick="inportar()" class="bt" style="left:670px;top:25px;">Inportar</button>
+        <button class="bt" style="left:0px; top:25px;" ondblclick="moveLastDoor()"><img src="imagems/moveCursor.png" class="undeletable"></img></button>
+        <button class="bt" style="left:0px; top:75px;" onclick="abrir5()"><img src="imagems/information.png" class="undeletable"></img></button>
+        <button class="bt" style="left:0px; top:125px;" onclick="abrir6()"><img src="imagems/recyclebin.png" class="undeletable"></img></button>
+        <button class="bt" style="left:0px; top:175px;" onclick="abrir7()"><img src="imagems/grabicon.png" class="undeletable"></img></button>
+        <button class="bt" style="left:0px; top:225px;" onclick="abrir8()"><img src="imagems/inverticon.png" class="undeletable"></img></button>
+        <button class="bt" style="left:0px; top:275px;" onclick="SwitchDoor()"><img src="imagems/alterarIcon.png" class="undeletable"></img></button>
+    </body>
+</htmL>
